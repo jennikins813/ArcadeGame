@@ -80,7 +80,7 @@ var Engine = (function(global) {
      */
     function update(dt) {
         updateEntities(dt);
-        // checkCollisions();
+        checkCollisions(player, allEnemies);    //implementing collision detection
     }
 
     /* This is called by the update function and loops through all of the
@@ -95,6 +95,21 @@ var Engine = (function(global) {
             enemy.update(dt);
         });
         player.update();
+    }
+
+    // Define checkCollisions function. When player collides with an enemy, reset method runs
+    // and player returns to initial position.
+    function checkCollisions() {
+        for (var i = 0; i < allEnemies.length; i++) {
+            if (player.x < allEnemies[i].x + 75 &&
+                player.x + 75 > allEnemies[i].x &&
+                player.y < allEnemies[i].y + 50 &&
+                player.y + 50 > allEnemies[i].y) {
+                console.log("Collision!!!checkCollisions function called");
+                player.reset();
+                break;
+            }
+        }
     }
 
     /* This function initially draws the "game level", it will then call

@@ -1,6 +1,18 @@
-frontend-nanodegree-arcade-game
-===============================
+# Frogger Arcade Game
 
-Students should use this [rubric](https://review.udacity.com/#!/projects/2696458597/rubric) for self-checking their submission. Make sure the functions you write are **object-oriented** - either class functions (like Player and Enemy) or class prototype functions such as Enemy.prototype.checkCollisions, and that the keyword 'this' is used appropriately within your class and class prototype functions to refer to the object the function is called upon. Also be sure that the **readme.md** file is updated with your instructions on both how to 1. Run and 2. Play your arcade game.
+**Project 4 of the Udacity Front-End Web Developer Nanodegree**
 
-For detailed instructions on how to get started, check out this [guide](https://docs.google.com/document/d/1v01aScPjSWCCWQLIpFqvg3-vXLH2e8_SZQKC8jNO0Dc/pub?embedded=true).
+The initial project repository can be found [here](https://github.com/udacity/frontend-nanodegree-arcade-game).
+The project focused on *Object Oriented JavaScript*.
+
+## How to Run the Game
+You can try the live demo [here](#), or you can download and save the files from this repository.
+
+## How to Play
+To start the game, use your arrow keys to move the player across the screen:
+
+**Left/Right Keys: moves the player to the left and right.**
+**Up/Down Keys: moves the player up and down.**
+
+**Win:** To achieve victory, your player must reach the water at the top of the game board.
+**Lose:** If you player collides with the giant bugs, the game is over; You can play the game again.

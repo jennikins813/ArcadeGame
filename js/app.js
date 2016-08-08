@@ -8,6 +8,7 @@ var Enemy = function(x, y) {
     this.sprite = 'images/enemy-bug.png';
     this.x = x;
     this.y = y;
+    this.speed = Math.floor(Math.random() * 400) + 1;
 };
 
 // Update the enemy's position, required method for game
@@ -16,11 +17,10 @@ Enemy.prototype.update = function(dt) {
     // You should multiply any movement by the dt parameter
     // which will ensure the game runs at the same speed for
     // all computers.
-    this.x += ((Math.random() * 300) + 1) * dt;
+    this.x += this.speed * dt;
     if (this.x >= 505) {
         this.x = 0;
-    };
-    // console.log('enemy x is:', this.x);
+    }
 };
 
 // Draw the enemy on the screen, required method for game
@@ -28,7 +28,7 @@ Enemy.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 };
 
-// Now write your own player class
+// Player class
 // This class requires an update(), render() and
 // a handleInput() method.
 var Player = function(x, y) {
@@ -37,8 +37,13 @@ var Player = function(x, y) {
     this.y = y;
 };
 
+// Update method will reset game when player reaches water (Victory!);
+// Player is set back to initial position on game board.
 Player.prototype.update = function() {
-    
+    if (this.y === -20) {
+        console.log("Victory!!!");
+        this.reset();
+    }
 };
 
 // Render the player on the game board.
@@ -58,33 +63,22 @@ Player.prototype.handleInput = function(x) {
     } else if (x === "down" && this.y < 380) {
         this.y += 80;
     }
-    // console.log('player y is:', this.y);
+    // console.log('player y is:', this.y);     //used to check player's position on board
 };
 
-// Create/define reset method (i.e. the player goes back to initial position on game board).
+// Define reset method (i.e. the player goes back to initial position on game board).
 // Reset occurs when player collides with enemies or when player reaches the water.
 Player.prototype.reset = function() {
     this.x = 200;
     this.y = 380;
-    //// TO DO: some code here
-    // if player y position is -20 (in water), game should reset to x: 200, y: 380
-    // if (this.y == -20) {
-        // console.log("RESET!");
-    // };
 };
 
-// Create/define collision method. When player collides with an enemy, game is reset
-// with player back in initial position.
-Player.prototype.checkCollisions = function() {
-
-};
-
-// Now instantiate your objects.
+// Instantiate your objects.
 // Place all enemy objects in an array called allEnemies
 // Place the player object in a variable called player
 var enemy1 = new Enemy(50, 50);
-var enemy2 = new Enemy(150, 135);
-var enemy3 = new Enemy(150, 220);
+var enemy2 = new Enemy(50, 135);
+var enemy3 = new Enemy(50, 220);
 
 var allEnemies = [enemy1, enemy2, enemy3];
 var player = new Player(200, 380);
